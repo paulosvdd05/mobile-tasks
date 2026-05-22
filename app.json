@@ -2,24 +2,33 @@
   "expo": {
     "name": "TesteTecnico",
     "slug": "TesteTecnico",
+    "scheme": "testetecnico",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
-    "userInterfaceStyle": "light",
+    "icon": "./assets/iconTasks.png",
+    "userInterfaceStyle": "automatic",
+    "newArchEnabled": true,
+    "splash": {
+      "image": "./assets/iconTasks.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#5C1FB8"
+    },
     "ios": {
       "supportsTablet": true
     },
     "android": {
       "adaptiveIcon": {
-        "backgroundColor": "#E6F4FE",
-        "foregroundImage": "./assets/android-icon-foreground.png",
-        "backgroundImage": "./assets/android-icon-background.png",
-        "monochromeImage": "./assets/android-icon-monochrome.png"
+        "foregroundImage": "./assets/iconTasks.png",
+        "backgroundColor": "#5C1FB8"
       },
+      "edgeToEdgeEnabled": true,
       "predictiveBackGestureEnabled": false
     },
     "web": {
-      "favicon": "./assets/favicon.png"
-    }
+      "favicon": "./assets/iconTasks.png"
+    },
+    "plugins": [
+      "expo-font"
+    ]
   }
 }
