@@ -1,22 +1,100 @@
-export const theme = {
-  borderRadius: {
-    lg: 24,
-    pill: 999,
-  },
+import { ColorSchemeName } from 'react-native';
+
+import { appConfig } from './app';
+
+export interface AppTheme {
   colors: {
-    background: '#F4F7FB',
-    border: '#D8E1EF',
-    primary: '#1357DD',
-    primarySoft: '#DCE7FF',
+    background: string;
+    backgroundStrong: string;
+    border: string;
+    buttonText: string;
+    contrastSurface: string;
+    contrastText: string;
+    danger: string;
+    heroOverlayEnd: string;
+    heroOverlayStart: string;
+    inputBackground: string;
+    inputLine: string;
+    mutedSurface: string;
+    placeholder: string;
+    primary: string;
+    primaryGradientEnd: string;
+    primaryStrong: string;
+    surface: string;
+    text: string;
+    textSecondary: string;
+    white: string;
+    black: string;
+  };
+  isDark: boolean;
+  radius: typeof appConfig.radius;
+  spacing: typeof appConfig.spacing;
+  statusBarStyle: 'dark' | 'light';
+  typography: typeof appConfig.typography;
+}
+
+const sharedTheme = {
+  radius: appConfig.radius,
+  spacing: appConfig.spacing,
+  typography: appConfig.typography,
+};
+
+const lightTheme: AppTheme = {
+  ...sharedTheme,
+  colors: {
+    background: appConfig.identity.colors.neutral0,
+    backgroundStrong: '#FFFFFF',
+    border: appConfig.identity.colors.neutral100,
+    buttonText: appConfig.identity.colors.neutral0,
+    contrastSurface: appConfig.identity.colors.neutral900,
+    contrastText: '#FFFFFF',
+    danger: appConfig.identity.colors.danger,
+    heroOverlayEnd: 'rgba(10, 10, 10, 0.88)',
+    heroOverlayStart: 'rgba(10, 10, 10, 0.12)',
+    inputBackground: '#FFFFFF',
+    inputLine: appConfig.identity.colors.neutral100,
+    mutedSurface: appConfig.identity.colors.neutral50,
+    placeholder: appConfig.identity.colors.neutral300,
+    primary: appConfig.identity.colors.primary,
+    primaryGradientEnd: appConfig.identity.colors.primaryGradientEnd,
+    primaryStrong: appConfig.identity.colors.primaryGradientEnd,
     surface: '#FFFFFF',
-    text: '#18212F',
-    textMuted: '#5A677A',
-    textSecondary: '#3D4A5D',
+    text: appConfig.identity.colors.neutral900,
+    textSecondary: appConfig.identity.colors.neutral400,
+    white: '#FFFFFF',
+    black: '#000000',
   },
-  spacing: {
-    sm: 12,
-    md: 16,
-    lg: 24,
-    xl: 32,
+  isDark: false,
+  statusBarStyle: 'dark' as const,
+};
+
+const darkTheme: AppTheme = {
+  ...sharedTheme,
+  colors: {
+    background: appConfig.identity.colors.neutral800,
+    backgroundStrong: appConfig.identity.colors.neutral900,
+    border: appConfig.identity.colors.neutral600,
+    buttonText: appConfig.identity.colors.neutral0,
+    contrastSurface: '#FFFFFF',
+    contrastText: appConfig.identity.colors.neutral900,
+    danger: appConfig.identity.colors.danger,
+    heroOverlayEnd: 'rgba(10, 10, 10, 0.9)',
+    heroOverlayStart: 'rgba(10, 10, 10, 0.15)',
+    inputBackground: appConfig.identity.colors.neutral800,
+    inputLine: appConfig.identity.colors.neutral600,
+    mutedSurface: appConfig.identity.colors.neutral700,
+    placeholder: appConfig.identity.colors.neutral500,
+    primary: appConfig.identity.colors.primary,
+    primaryGradientEnd: appConfig.identity.colors.primaryGradientEnd,
+    primaryStrong: appConfig.identity.colors.primaryGradientEnd,
+    surface: appConfig.identity.colors.neutral800,
+    text: appConfig.identity.colors.neutral0,
+    textSecondary: appConfig.identity.colors.neutral300,
+    white: '#FFFFFF',
+    black: '#000000',
   },
-} as const;
+  isDark: true,
+  statusBarStyle: 'light' as const,
+};
+
+export const getTheme = (colorScheme: ColorSchemeName): AppTheme => (colorScheme === 'dark' ? darkTheme : lightTheme);

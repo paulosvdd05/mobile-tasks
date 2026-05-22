@@ -1,23 +1,26 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { createSlice } from '@reduxjs/toolkit';
 
 interface AppState {
-  initializedAt: string | null;
+  hasHydratedSession: boolean;
 }
 
 const initialState: AppState = {
-  initializedAt: null,
+  hasHydratedSession: false,
 };
 
 const appSlice = createSlice({
   initialState,
   name: 'app',
   reducers: {
-    setInitializedAt: (state, action: PayloadAction<string>) => {
-      state.initializedAt = action.payload;
+    finishSessionHydration: state => {
+      state.hasHydratedSession = true;
+    },
+    resetAppState: state => {
+      state.hasHydratedSession = false;
     },
   },
 });
 
-export const { setInitializedAt } = appSlice.actions;
+export const { finishSessionHydration, resetAppState } = appSlice.actions;
 
 export default appSlice.reducer;
