@@ -5,11 +5,11 @@
     "scheme": "testetecnico",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/iconTasks.png",
+    "icon": "./assets/icon.png",
     "userInterfaceStyle": "automatic",
     "newArchEnabled": true,
     "splash": {
-      "image": "./assets/iconTasks.png",
+      "image": "./assets/icon.png",
       "resizeMode": "contain",
       "backgroundColor": "#5C1FB8"
     },
@@ -18,17 +18,15 @@
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/iconTasks.png",
+        "foregroundImage": "./assets/icon.png",
         "backgroundColor": "#5C1FB8"
       },
       "edgeToEdgeEnabled": true,
       "predictiveBackGestureEnabled": false
     },
     "web": {
-      "favicon": "./assets/iconTasks.png"
+      "favicon": "./assets/icon.png"
     },
-    "plugins": [
-      "expo-font"
-    ]
+    "plugins": ["expo-font"]
   }
 }
