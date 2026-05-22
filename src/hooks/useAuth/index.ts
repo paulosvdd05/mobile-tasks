@@ -1,7 +1,7 @@
 import { useState } from 'react';
 
 import { Prefs } from '../../repository';
-import { clearSession, setSession, useAppDispatch } from '../../store';
+import { clearSession, clearTasks, setSession, useAppDispatch } from '../../store';
 import { AuthResponse, SessionData, SignInPayload, SignUpPayload } from '../../types/auth';
 import { getApiErrorMessage } from '../../utils';
 import { useService } from '../useService';
@@ -44,6 +44,8 @@ export const useAuth = () => {
 
   const signOut = async () => {
     await Prefs.clearSession();
+    await Prefs.clearTasksState();
+    dispatch(clearTasks());
     dispatch(clearSession());
   };
 

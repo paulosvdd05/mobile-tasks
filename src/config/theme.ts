@@ -4,8 +4,10 @@ import { appConfig } from './app';
 
 export interface AppTheme {
   colors: {
+    avatarSurface: string;
     background: string;
     backgroundStrong: string;
+    backdrop: string;
     border: string;
     buttonText: string;
     contrastSurface: string;
@@ -20,7 +22,10 @@ export interface AppTheme {
     primary: string;
     primaryGradientEnd: string;
     primaryStrong: string;
+    sheetHandle: string;
+    sheetSurface: string;
     surface: string;
+    taskSurface: string;
     text: string;
     textSecondary: string;
     white: string;
@@ -42,8 +47,10 @@ const sharedTheme = {
 const lightTheme: AppTheme = {
   ...sharedTheme,
   colors: {
+    avatarSurface: appConfig.identity.colors.neutral100,
     background: appConfig.identity.colors.neutral0,
     backgroundStrong: '#FFFFFF',
+    backdrop: 'rgba(1, 22, 39, 0.28)',
     border: appConfig.identity.colors.neutral100,
     buttonText: appConfig.identity.colors.neutral0,
     contrastSurface: appConfig.identity.colors.neutral900,
@@ -58,7 +65,10 @@ const lightTheme: AppTheme = {
     primary: appConfig.identity.colors.primary,
     primaryGradientEnd: appConfig.identity.colors.primaryGradientEnd,
     primaryStrong: appConfig.identity.colors.primaryGradientEnd,
+    sheetHandle: appConfig.identity.colors.neutral200,
+    sheetSurface: '#FFFFFF',
     surface: '#FFFFFF',
+    taskSurface: appConfig.identity.colors.neutral50,
     text: appConfig.identity.colors.neutral900,
     textSecondary: appConfig.identity.colors.neutral400,
     white: '#FFFFFF',
@@ -71,8 +81,10 @@ const lightTheme: AppTheme = {
 const darkTheme: AppTheme = {
   ...sharedTheme,
   colors: {
+    avatarSurface: appConfig.identity.colors.neutral700,
     background: appConfig.identity.colors.neutral800,
     backgroundStrong: appConfig.identity.colors.neutral900,
+    backdrop: 'rgba(0, 0, 0, 0.48)',
     border: appConfig.identity.colors.neutral600,
     buttonText: appConfig.identity.colors.neutral0,
     contrastSurface: '#FFFFFF',
@@ -87,7 +99,10 @@ const darkTheme: AppTheme = {
     primary: appConfig.identity.colors.primary,
     primaryGradientEnd: appConfig.identity.colors.primaryGradientEnd,
     primaryStrong: appConfig.identity.colors.primaryGradientEnd,
+    sheetHandle: appConfig.identity.colors.neutral500,
+    sheetSurface: appConfig.identity.colors.neutral700,
     surface: appConfig.identity.colors.neutral800,
+    taskSurface: appConfig.identity.colors.neutral700,
     text: appConfig.identity.colors.neutral0,
     textSecondary: appConfig.identity.colors.neutral300,
     white: '#FFFFFF',

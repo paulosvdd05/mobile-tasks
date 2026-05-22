@@ -2,10 +2,11 @@ import { useEffect, useState } from 'react';
 import { KeyboardAvoidingView, Platform, Pressable, Text, View } from 'react-native';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 
+import { BackArrowIcon } from '../../assets/icons';
 import { AppButton, AppTextInput, ScreenContainer } from '../../components';
 import { useAppTheme, useAuth } from '../../hooks';
 import { RootStackParamList } from '../../types/navigation';
-import { isValidEmail } from '../../utils';
+import { capitalizeFirstLetter, isValidEmail } from '../../utils';
 import { useAuthStyles } from './styles';
 
 type AuthMode = 'signIn' | 'signUp';
@@ -231,7 +232,7 @@ export const Auth = ({ navigation, route }: AuthScreenProps) => {
     clearErrors();
 
     if (content.step === 'name') {
-      setName(value);
+      setName(capitalizeFirstLetter(value));
       return;
     }
 
@@ -249,7 +250,7 @@ export const Auth = ({ navigation, route }: AuthScreenProps) => {
         <View style={styles.screenContent}>
           <View style={styles.topSection}>
             <Pressable onPress={handleBack} style={styles.backButton}>
-              <Text style={styles.backButtonText}>{'<'}</Text>
+              <BackArrowIcon color={theme.colors.text} />
             </Pressable>
 
             <View style={styles.heroCard}>
