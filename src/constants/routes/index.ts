@@ -1,5 +1,15 @@
 export const routes = {
-  home: {
-    name: 'Home' as const,
+  onboarding: {
+    name: 'Onboarding' as const,
+  },
+  auth: {
+    name: 'Auth' as const,
+  },
+  dashboard: {
+    name: 'Dashboard' as const,
+  },
+  profile: {
+    name: 'Profile' as const,
+    path: 'perfil',
   },
 };
