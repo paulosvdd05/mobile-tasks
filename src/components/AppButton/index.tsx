@@ -11,7 +11,7 @@ interface AppButtonProps {
   loading?: boolean;
   onPress: () => void;
   title: string;
-  variant?: "primary" | "secondary" | "light" | "contrast";
+  variant?: "primary" | "secondary" | "light" | "contrast" | "danger";
 }
 
 export const AppButton: FC<AppButtonProps> = ({
@@ -28,6 +28,7 @@ export const AppButton: FC<AppButtonProps> = ({
   const isPrimary = variant === "primary";
   const isLight = variant === "light";
   const isContrast = variant === "contrast";
+  const isDanger = variant === "danger";
 
   const containerStyle: ViewStyle[] = [styles.button, styles[variant]];
 
@@ -68,6 +69,8 @@ export const AppButton: FC<AppButtonProps> = ({
               ? theme.colors.black
               : isContrast
                 ? theme.colors.contrastText
+                : isDanger
+                  ? theme.colors.white
                 : theme.colors.primary
           }
         />
@@ -79,6 +82,8 @@ export const AppButton: FC<AppButtonProps> = ({
               ? styles.buttonText
               : isContrast
                 ? styles.contrastText
+                : isDanger
+                  ? styles.dangerText
                 : styles.secondaryText,
           ]}
         >

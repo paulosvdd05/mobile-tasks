@@ -1,6 +1,6 @@
 # TesteTecnico
 
-Aplicativo React Native com Expo para o teste técnico mobile.
+Aplicativo React Native com Expo para o teste tecnico mobile.
 
 ## Stack
 
@@ -10,19 +10,24 @@ Aplicativo React Native com Expo para o teste técnico mobile.
 - Redux Toolkit
 - AsyncStorage
 - Axios
+- Expo Network
+- React Native Gesture Handler
 
-## Escopo atual
+## Funcionalidades implementadas
 
 - Tela de onboarding
-- Tela única de login e cadastro
-- Persistência local da sessão
-- Tela pós-login simples
-- Tela de perfil placeholder com deep link em `/perfil`
-- Tema automático conforme o tema do dispositivo
+- Fluxo de cadastro em etapas: nome, e-mail e senha
+- Fluxo de login em etapas: e-mail e senha
+- Dashboard de tasks
+- Tela de perfil com deep link em `/perfil`
+- Tema automatico conforme o tema do dispositivo
+- Persistencia local da sessao
+- Persistencia local das tasks
+- Fluxo offline-first para tasks, com fila de sincronizacao
 
 ## Como rodar
 
-1. Instale as dependências:
+1. Instale as dependencias:
 
 ```bash
 npm install
@@ -45,22 +50,35 @@ npm run android
 - iPhone com Expo Go:
   Escaneie o QR code exibido no terminal.
 
+Se quiser limpar o cache do Metro:
+
+```bash
+npx expo start -c
+```
+
 ## API
 
 - Base URL: `https://api-teste-mobile.fly.dev`
-- Documentação: `https://api-teste-mobile.fly.dev/openapi`
+- Documentacao: `https://api-teste-mobile.fly.dev/openapi`
 
 ## Deep link
 
-O app já está configurado com esquema `testetecnico` e rota `/perfil`.
+O app esta configurado com esquema `testetecnico` e rota `/perfil`.
 
 Exemplos:
 
 - `testetecnico://perfil`
 - `exp://SEU-IP:8081/--/perfil`
 
-## Observações
+## Decisoes de implementacao
 
-- O projeto está em Expo SDK 54 para compatibilidade com a versão atual do Expo Go.
-- A identidade visual atual usa a paleta neutra + roxo fornecida no material do design.
-- A parte de tarefas e o fluxo offline-first ainda serão evoluídos nas próximas etapas.
+- Tomei a liberdade de adicionar alguns ajustes alem do prototipo para melhorar a experiencia no fluxo de tasks e deixar a visualizacao mais clara no uso real do app.
+- Quando nao existe nenhuma tarefa, o dashboard mostra uma mensagem de estado vazio. Quando apenas uma das secoes esta vazia, a interface mostra `Sem tarefas.` somente naquela secao.
+- Para o sincronismo offline, alem da tentativa automatica quando a conexao volta, adicionei um fluxo de `refresh` manual para deixar a recuperacao mais intuitiva em casos de erro ou alteracoes pendentes.
+- Interpretei no Figma que o botao de excluir deveria aparecer ao arrastar a task para a esquerda, entao implementei esse comportamento dessa forma.
+
+## Observacoes
+
+- O projeto esta em Expo SDK 54 para compatibilidade com a versao atual do Expo Go.
+- O app reage ao tema claro e escuro do dispositivo.
+- As tasks podem ser criadas, marcadas e excluidas offline; quando a internet volta, a sincronizacao e tentada automaticamente.

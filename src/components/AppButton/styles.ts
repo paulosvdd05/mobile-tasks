@@ -18,6 +18,12 @@ export const useAppButtonStyles = (theme: AppTheme) =>
     contrastText: {
       color: theme.colors.contrastText,
     },
+    danger: {
+      backgroundColor: theme.colors.danger,
+    },
+    dangerText: {
+      color: theme.colors.white,
+    },
     disabled: {
       opacity: 0.6,
     },

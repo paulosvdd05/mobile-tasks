@@ -2,6 +2,7 @@ import 'react-native-gesture-handler';
 
 import { FC } from 'react';
 import { ActivityIndicator, View } from 'react-native';
+import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { Provider } from 'react-redux';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 
@@ -15,27 +16,31 @@ const App: FC = () => {
 
   if (!fontsLoaded && !hasFontError) {
     return (
-      <SafeAreaProvider>
-        <View
-          style={{
-            alignItems: 'center',
-            backgroundColor: appConfig.identity.colors.neutral0,
-            flex: 1,
-            justifyContent: 'center',
-          }}
-        >
-          <ActivityIndicator color={appConfig.identity.colors.primary} size='large' />
-        </View>
-      </SafeAreaProvider>
+      <GestureHandlerRootView style={{ flex: 1 }}>
+        <SafeAreaProvider>
+          <View
+            style={{
+              alignItems: 'center',
+              backgroundColor: appConfig.identity.colors.neutral0,
+              flex: 1,
+              justifyContent: 'center',
+            }}
+          >
+            <ActivityIndicator color={appConfig.identity.colors.primary} size='large' />
+          </View>
+        </SafeAreaProvider>
+      </GestureHandlerRootView>
     );
   }
 
   return (
-    <SafeAreaProvider>
-      <Provider store={store}>
-        <AppContent />
-      </Provider>
-    </SafeAreaProvider>
+    <GestureHandlerRootView style={{ flex: 1 }}>
+      <SafeAreaProvider>
+        <Provider store={store}>
+          <AppContent />
+        </Provider>
+      </SafeAreaProvider>
+    </GestureHandlerRootView>
   );
 };
 
