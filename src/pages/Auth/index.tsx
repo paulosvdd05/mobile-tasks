@@ -250,7 +250,7 @@ export const Auth = ({ navigation, route }: AuthScreenProps) => {
         <View style={styles.screenContent}>
           <View style={styles.topSection}>
             <Pressable onPress={handleBack} style={styles.backButton}>
-              <BackArrowIcon color={theme.colors.text} />
+              <BackArrowIcon fill={theme.colors.text} />
             </Pressable>
 
             <View style={styles.heroCard}>
